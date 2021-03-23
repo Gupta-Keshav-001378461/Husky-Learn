@@ -1,0 +1,36 @@
+
+<mat-card class="outer-mat-card" *ngIf="profile != null">
+<div class="profile-class">
+  <mat-card-content>
+      <h4 class="rightdivtext">
+          {{profile.username}}
+      </h4>
+  </mat-card-content>
+  <mat-card-content>
+      <div class="authorimagecontainer">
+        <div><img mat-card-avatar [src]="profile.image"></div>
+          <h5>{{profile.bio}}</h5>
+      </div>
+  </mat-card-content>
+    </div>
+  <mat-card-content>
+
+    <nav mat-tab-nav-bar mat-align-tabs="center" color="primary" >
+            <a mat-tab-link
+              (click)="decideArticleTab(1)"
+              routerLinkActive #rla="routerLinkActive"
+              [active]="rla.isActive">
+              My Articles
+            </a>
+            <a mat-tab-link
+              (click)="decideArticleTab(2)"
+              routerLinkActive #rla="routerLinkActive"
+              [active]="rla.isActive">
+              Favorite Articles
+            </a>
+      </nav>
+      <app-favourite-articles *ngIf="username && !showMyArticles" [username]="username"></app-favourite-articles>
+      <app-my-articles *ngIf="username && showMyArticles " [username]="username"></app-my-articles>
+  </mat-card-content>
+
+</mat-card>

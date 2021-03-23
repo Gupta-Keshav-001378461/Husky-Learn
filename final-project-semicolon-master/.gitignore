@@ -1,0 +1,5 @@
+husky-learn/node_modules
+Server/node_modules
+husky-learn/logs
+Server/logs
+.DS_Store

@@ -1,0 +1,35 @@
+.outer-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+mat-card-header{
+    display: flex;
+    justify-content: space-between;
+}
+.author{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.inner-card{
+    width:900px;
+}
+.like-comment{
+    display: flex;
+    justify-content: space-between;
+}
+.title-btn{
+    display: flex;
+    justify-content: flex-start;
+    padding: 0px
+}
+.author-btn{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px
+}
+.fav-btn{
+    border: none;
+}

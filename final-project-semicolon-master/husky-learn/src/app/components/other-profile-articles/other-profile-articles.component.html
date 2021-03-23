@@ -1,0 +1,46 @@
+
+
+ <div *ngFor = "let article of listOfArticles " class="outer-card">
+    <mat-card class="inner-card" >
+     <mat-card-header>
+       <mat-card-title>
+         <button class = "title-btn"mat-button color="primary" (click)="viewArticle(article)">{{article.title}}</button> 
+       </mat-card-title>
+       <mat-card-subtitle>{{article.description}}</mat-card-subtitle>
+       <mat-card-content class="author">
+         <mat-card-subtitle><img mat-card-avatar [src]="article.author.image"></mat-card-subtitle>
+         <mat-card-subtitle>{{article.author.username}}</mat-card-subtitle>
+         <mat-card-subtitle>{{article.createdAt| date:'longDate'}}</mat-card-subtitle>
+        </mat-card-content>
+     </mat-card-header>
+     <mat-divider></mat-divider>
+     <br>
+  
+     <mat-card-content class="like-comment">
+       <mat-card-subtitle>
+         <mat-chip-list>
+           <mat-chip >{{article.favoritesCount}}<mat-icon color="warn">favorite</mat-icon></mat-chip>
+           <button class="fav-btn" mat-stroked-button color="primary"*ngIf = "!article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'>Add Favorite</button>
+           <button class="fav-btn" mat-stroked-button color="accent" *ngIf = "article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'>Unfavorite</button>
+           <!-- <mat-chip color="primary" *ngIf = "!article.favorited" selected (click)="toggleFavorite(article.slug, article.favorited)">Add favorite</mat-chip>
+           <mat-chip color="accent" *ngIf = "article.favorited" selected (click)="toggleFavorite(article.slug, article.favorited)">Unfavorite</mat-chip> -->
+         </mat-chip-list>
+  
+         
+  
+         <!-- <button mat-button *ngIf = "!article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'><mat-icon>favorite_border</mat-icon></button> -->
+         <!-- <button mat-button *ngIf = "article.favorited" (click)='toggleFavorite(article.slug, article.favorited)'><mat-icon color="warn">favorite</mat-icon></button> -->
+       </mat-card-subtitle>
+       <mat-card-subtitle>
+         <!-- <button mat-button type="submit"  (click) = "article.showAdd = !article.showAdd" ><mat-icon>add_comment</mat-icon></button>
+         <app-add-comment *ngIf="article.showAdd" [slug]="article.slug"></app-add-comment> -->
+         <!-- <button mat-button type="submit"  (click) = "article.showAdd = !article.showAdd" ><mat-icon>add_comment</mat-icon></button> -->
+         <button mat-button type="submit" (click)="viewArticle(article)"><mat-icon color="primary">add_comment</mat-icon></button>
+         
+  
+        </mat-card-subtitle>
+  
+     </mat-card-content>
+    </mat-card>
+   </div>
+  

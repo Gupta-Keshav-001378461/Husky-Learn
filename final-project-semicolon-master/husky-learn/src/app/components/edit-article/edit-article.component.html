@@ -1,0 +1,47 @@
+<div class="outer-card">
+  <mat-card class="example-card" *ngIf="currentArticle!=null">
+    <mat-card-header>
+      <img mat-card-avatar class="example-header-image" [src]="currentArticle.author.image">
+      <mat-card-title>{{currentArticle.title}}</mat-card-title>
+      <mat-card-subtitle>
+        Author: {{currentArticle.author.username}}
+        <mat-divider [vertical]="true"></mat-divider>
+        {{currentArticle.createdAt| date:'longDate'}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="../../../assets/book.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-subtitle>{{currentArticle.description}}</mat-card-subtitle>
+    <mat-card-actions>
+      <mat-chip-list>
+        <mat-chip [routerLink]="['/newarticle', slug]" [state]='currentArticle'><mat-icon>edit</mat-icon></mat-chip>
+        <mat-chip (click)="deleteArticle()"><mat-icon>delete_forever</mat-icon></mat-chip>
+        <!-- <mat-chip color="primary" *ngIf = "!currentArticle.favorited" selected (click)="toggleFavorite(currentArticle.favorited)">Add favorite</mat-chip> -->
+        <!-- <mat-chip color="accent" *ngIf = "currentArticle.favorited" selected (click)="toggleFavorite(currentArticle.favorited)">Unfavorite</mat-chip> -->
+      </mat-chip-list>
+    </mat-card-actions>
+    
+    <mat-card-content>
+      <p>
+        {{currentArticle.body}}
+      </p>
+    </mat-card-content>
+   
+    <mat-card-content>
+      <app-add-comment (updateCommentList)="updateCommentList()" [slug]="currentArticle.slug"></app-add-comment>
+      <mat-card  class="one-comment"> 
+        <mat-card-content *ngFor="let comment of commentList " class="comment-body">        
+          <mat-card-subtitle>
+            <strong>{{comment.body}}</strong>
+            <mat-divider [vertical]="true"></mat-divider>
+            <i>{{comment.author.username}}</i>
+            <mat-divider [vertical]="true"></mat-divider>
+            {{comment.createdAt| date:'longDate'}}
+          </mat-card-subtitle>
+          <mat-card-subtitle><button mat-button (click)="deleteComment(comment.id)"><mat-icon>cancel</mat-icon></button></mat-card-subtitle>
+          <!-- remove_circle_outline -->
+          <!-- <mat-divider [vertical]="false"></mat-divider> -->
+        </mat-card-content>
+  </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

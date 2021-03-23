@@ -1,0 +1,48 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Write an article</mat-card-title>
+        <mat-card-subtitle>Lets get creative</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p><app-format-error [errorList]="errorList" *ngIf="error"></app-format-error></p>
+        <!-- <p class="success">{{this.successMsg}}</p> -->
+        <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+            <p>
+                <mat-form-field class="legacy">
+                    <mat-label>Article Title</mat-label>
+                    <input matInput formControlName="title" placeholder="Artile Title" required>
+                    <mat-hint></mat-hint>
+                  </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="legacy">
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="description" placeholder="What is it about?" required>
+                    <mat-hint></mat-hint>
+                  </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Passage</mat-label>
+                    <textarea matInput
+                     class="passage" 
+                     formControlName="body" 
+                     placeholder="article goes here...." required></textarea>
+                  </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field class="legacy">
+                      <mat-label>Tags</mat-label>
+                      <input matInput formControlName="tags" placeholder="Enter comma separated tags...Ex. a,abc">
+                      <mat-hint></mat-hint>
+                    </mat-form-field>
+                </p>
+              <p>
+                <button mat-stroked-button color="primary" [disabled]="!articleForm.valid">Submit Article</button>
+              </p>
+
+              <!-- <p><app-format-error [errorList]="errorList" *ngIf="error"></app-format-error></p> -->
+        </form>
+      </mat-card-content>
+</mat-card>

@@ -1,0 +1,10 @@
+<form  [formGroup]="addCommentForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+  <mat-label>Comment</mat-label>
+  <input matInput placeholder="Write comment here" value="" formControlName="comment" required>
+  </mat-form-field>
+  <button mat-button type="submit" [disabled]="!addCommentForm.valid"><mat-icon color="primary">add_comment</mat-icon></button>
+  <!-- <p class="success" *ngIf="success">{{successMessage}}</p> -->
+  <!-- <p><app-format-error [errorList]="errorList" *ngIf="error"></app-format-error></p> -->
+
+ </form>

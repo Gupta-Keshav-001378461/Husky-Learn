@@ -1,0 +1,36 @@
+
+<mat-card>
+    <mat-card-header>
+        <div mat-card-avatar><mat-icon>account_circle</mat-icon></div>
+        <mat-card-title>Sign in</mat-card-title>
+        <mat-card-subtitle [routerLink]="['/signup']"  routerLinkActive="active">Need an account?</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- <form class="example-form" [formGroup]="todoForm" (ngSubmit)="onSubmit()"> -->
+        <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+            <p>
+                <mat-form-field class="legacy">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Ex. xx@example.com" required>
+                    
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    <mat-hint></mat-hint>
+                  </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field appearance="legacy">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="password" formControlName="password" [type]="hide ? 'password' : 'text'" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    <mat-hint></mat-hint>
+                  </mat-form-field>
+              </p>
+              <p>
+                <button mat-stroked-button color="primary" [disabled]="!signinForm.valid">Sign in!</button>
+              </p>
+              <p><app-format-error [errorList]="errorList" *ngIf="error"></app-format-error></p>
+        </form>
+      </mat-card-content>
+</mat-card>

@@ -1,0 +1,53 @@
+<mat-card *ngIf="currentUser!=null">
+  <mat-card-header>
+      <div mat-card-avatar><mat-icon>settings_applications</mat-icon></div>
+      <mat-card-title>Settings</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p><app-format-error [errorList]="errorList" *ngIf="error"></app-format-error></p>
+    <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+      
+      <p>
+  <mat-form-field class="legacy" >
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="image">
+    </mat-form-field>
+  </p>
+    
+    <p>
+  <mat-form-field appearance="legacy">
+    <mat-label>Username</mat-label>
+    <input matInput formControlName="username">
+  </mat-form-field>
+</p>
+
+  <p>
+  <mat-form-field appearance="legacy">
+    <mat-label>Add Bio</mat-label>
+    <textarea matInput formControlName="bio"></textarea>
+  </mat-form-field>
+</p>
+  <p>
+  <mat-form-field appearance="legacy">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Ex. xx@example.com" required>
+     
+  
+    </mat-form-field>
+    </p>
+    <p>
+  <mat-form-field appearance="legacy">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" placeholder="******" required type='password' minlength="6">
+  </mat-form-field>
+</p>
+
+
+<p>
+  <button mat-stroked-button color="primary" [disabled]="!settingsForm.valid">Update Profile</button>  
+</p>
+  <br>
+<button mat-stroked-button color="primary" (click)='logout()'>Log out</button>
+</form>
+</mat-card-content>
+</mat-card>
